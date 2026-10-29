@@ -1,0 +1,21 @@
+{
+  "identifier": "bannerify-bannerify-mcp",
+  "name": "Bannerify",
+  "version": "1.0.0",
+  "author": "Bannerify",
+  "authorUrl": "https://github.com/bannerify",
+  "category": "productivity",
+  "cloudEndpoint": "https://api.bannerify.co/mcp",
+  "description": "Generate images and PDFs from your Bannerify templates, or compose a one-off image from shapes. Remote server with OAuth sign-in.",
+  "homepage": "https://bannerify.co/docs/mcp/overview",
+  "icon": "https://www.google.com/s2/favicons?domain=bannerify.co&sz=128",
+  "tags": ["image-generation", "pdf", "templates", "open-graph", "design"],
+  "tools": [
+    { "name": "list_templates", "description": "Lists the templates in the workspace. With includeLayers, it also lists the layers you can change.", "inputSchema": { "type": "object", "properties": { "includeLayers": { "type": "boolean" } } } },
+    { "name": "get_template", "description": "Reads one template and its layers.", "inputSchema": { "type": "object", "properties": { "templateId": { "type": "string" } }, "required": ["templateId"] } },
+    { "name": "get_project", "description": "Reads the workspace: its id, name, plan, and creation date.", "inputSchema": { "type": "object", "properties": {} } },
+    { "name": "create_image", "description": "Renders a template and returns the image.", "inputSchema": { "type": "object", "properties": { "templateId": { "type": "string" }, "modifications": { "type": "object" }, "format": { "type": "string", "enum": ["png", "jpeg", "webp"] } }, "required": ["templateId"] } },
+    { "name": "create_pdf", "description": "Renders a template as a PDF and returns a link to it.", "inputSchema": { "type": "object", "properties": { "templateId": { "type": "string" }, "modifications": { "type": "object" } }, "required": ["templateId"] } },
+    { "name": "create_image_from_shapes", "description": "Composes an image from shapes, with no template.", "inputSchema": { "type": "object", "properties": { "canvas": { "type": "object" }, "shapes": { "type": "array" }, "format": { "type": "string", "enum": ["png", "jpeg", "webp"] } }, "required": ["shapes"] } }
+  ]
+}
